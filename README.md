@@ -4,7 +4,7 @@ This is a Machine Learning–based web application that predicts health insuranc
 
 ## Project Structure
 
- Health_Insurance_Premium_Prediction/
+Health_Insurance_Premium_Prediction/
 │
 ├── artifacts/
 │   └── model_rest.joblib        # Trained ML model
@@ -16,6 +16,7 @@ This is a Machine Learning–based web application that predicts health insuranc
 ├── README.md                    # Project documentation
 ├── LICENSE                      # Apache 2.0 License
 └── .gitignore                   # Ignored files & folders
+
 
 ##⚙️ Tech Stack
 
