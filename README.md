@@ -18,7 +18,7 @@ Health_Insurance_Premium_Prediction/
 ├── LICENSE                      # Apache 2.0 License
 └── .gitignore                   # Ignored files & folders
 
-
+```markdown
 ## ⚙️ Tech Stack
 
 - **Programming Language:** Python  
