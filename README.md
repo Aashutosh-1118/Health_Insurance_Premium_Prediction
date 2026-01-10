@@ -4,6 +4,22 @@ This is a **Machine Learning–based web application** that predicts the **healt
 
 ---
 
+## 🧠 Model Strategy (Age-Based)
+
+The prediction pipeline is designed using **two different machine learning models**:
+
+- **Users with age < 25**
+  - Model used: **Linear Regression**
+  - Reason: Premium patterns are simpler and more linear for younger individuals
+
+- **Users with age ≥ 25**
+  - Model used: **XGBoost Regressor**
+  - Reason: Premium calculations become more complex due to higher health risks and non-linear factors
+
+The appropriate model is selected **dynamically at runtime** based on the user's age.
+
+---
+
 ## 📁 Project Structure
 
 ```text
