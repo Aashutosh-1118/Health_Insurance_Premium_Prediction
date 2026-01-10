@@ -35,5 +35,27 @@ Health_Insurance_Premium_Prediction/
 ├── README.md                    # Project documentation
 ├── LICENSE                      # Apache 2.0 License
 └── .git
+---
+```
 
+## ⚙️ Tech Stack
+
+- **Programming Language:** Python  
+- **Machine Learning:** Linear Regression, XGBoost, Scikit-learn  
+- **Web Framework:** Streamlit  
+- **Model Persistence:** Joblib  
+
+---
+
+## 🚀 How to Run the Project
+
+```bash
+# Clone repository
+git clone https://github.com/Aashutosh-1118/Health_Insurance_Premium_Prediction.git
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run Streamlit app
+streamlit run main.py
 
