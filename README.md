@@ -2,8 +2,9 @@
 This is a Machine Learning–based web application that predicts health insurance premium cost based on user details such as age, income, BMI category, smoking status, medical history, insurance plan, and number of dependents.
 
 
-## Project Structure
+## 📁 Project Structure
 
+```text
 Health_Insurance_Premium_Prediction/
 │
 ├── artifacts/
@@ -18,9 +19,10 @@ Health_Insurance_Premium_Prediction/
 └── .gitignore                   # Ignored files & folders
 
 
-##⚙️ Tech Stack
+## ⚙️ Tech Stack
 
--Programming Language: Python
--Machine Learning: XGBoost, Scikit-learn
--Web Framework: Streamlit
--Model Persistence: Joblib
+- **Programming Language:** Python  
+- **Machine Learning:** XGBoost, Scikit-learn  
+- **Web Framework:** Streamlit  
+- **Model Persistence:** Joblib  
+
