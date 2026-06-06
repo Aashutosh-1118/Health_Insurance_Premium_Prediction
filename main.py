@@ -2,6 +2,7 @@ import streamlit as st
 from prediction_helper import predict
 
 st.title('Health Insurance Cost Predictor')
+st.caption("Predicts annual health insurance premium based on customer risk profile.")
 
 categorical_options = {
     'Gender': ['Male', 'Female'],
@@ -69,4 +70,4 @@ input_dict = {
 }
 if st.button('Predict'):
     prediction = predict(input_dict)
-    st.success(f'Predicted Health Insurance Cost: {prediction}')
+    st.success(f'Predicted Annual Health Insurance Premium: ₹{prediction:,}')
