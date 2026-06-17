@@ -11,11 +11,11 @@ This is a **Machine Learning–based web application** that predicts the **healt
 
 The prediction pipeline is designed using **two different machine learning models**:
 
-- **Users with age < 25**
+- **Users with age <= 25**
   - Model used: **Linear Regression**
   - Reason: Premium patterns are simpler and more linear for younger individuals
 
-- **Users with age ≥ 25**
+- **Users with age > 25**
   - Model used: **XGBoost Regressor**
   - Reason: Premium calculations become more complex due to higher health risks and non-linear factors
 
@@ -29,10 +29,10 @@ The appropriate model is selected **dynamically at runtime** based on the user's
 Health_Insurance_Premium_Prediction/
 │
 ├── artifacts/
-│   ├── model_young.joblib       # Trained model for age < 25 (Linear Regression)
-│   ├── model_rest.joblib        # Trained model for age >= 25 (XGBoost Regressor)
-│   ├── scaler_young.joblib      # Feature scaler for age < 25
-│   └── scaler_rest.joblib       # Feature scaler for age >= 25
+│   ├── model_young.joblib       # Trained model for age <= 25 (Linear Regression)
+│   ├── model_rest.joblib        # Trained model for age > 25 (XGBoost Regressor)
+│   ├── scaler_young.joblib      # Feature scaler for age <= 25
+│   └── scaler_rest.joblib       # Feature scaler for age > 25
 │
 ├── main.py                      # Application entry point (Streamlit UI)
 ├── prediction_helper.py         # Model loading & prediction logic
