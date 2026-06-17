@@ -6,7 +6,7 @@ st.set_page_config(page_title="Health Insurance Cost Predictor", page_icon="🏥
 st.markdown("""
 <style>
     .stApp {
-        background-color: #f5f7fa;
+        background-color: #0e1117;
     }
     .main .block-container {
         padding-top: 1.5rem;
@@ -30,20 +30,24 @@ st.markdown("""
         font-size: 0.95rem;
     }
     div[data-testid="stVerticalBlockBorderWrapper"] {
-        background-color: white;
+        background-color: #1a1f2b;
+        border: 1px solid #2a3140;
         border-radius: 10px;
         padding: 0.5rem 1rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     }
     h3 {
-        color: #0f2545;
+        color: #e8edf5 !important;
+    }
+    label, .stMarkdown p {
+        color: #c9d2e0 !important;
     }
     div.stButton > button[kind="primary"] {
         background-color: #1d4e89;
         border: none;
+        color: white;
     }
     div.stButton > button[kind="primary"]:hover {
-        background-color: #0f2545;
+        background-color: #2f6bb3;
     }
 </style>
 
@@ -141,7 +145,6 @@ if predict_clicked:
     prediction = predict(input_dict)
     st.divider()
     st.success(f'Predicted Health Insurance Cost: ₹{prediction:,}')
-
 # import streamlit as st
 # from prediction_helper import predict
 
