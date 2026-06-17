@@ -2,6 +2,9 @@
 
 This is a **Machine Learning–based web application** that predicts the **health insurance premium cost** based on user details such as age, income, BMI category, smoking status, medical history, insurance plan, and number of dependents.
 
+🔗 **Live App:** [health-insurance-premium-prediction1.streamlit.app](https://health-insurance-premium-prediction1.streamlit.app/)
+
+
 ---
 
 ## 🧠 Model Strategy (Age-Based)
