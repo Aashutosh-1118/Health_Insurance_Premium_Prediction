@@ -89,9 +89,7 @@ with col2:
 if predict_clicked:
     prediction = predict(input_dict)
     st.divider()
-    res_col1, res_col2, res_col3 = st.columns([1, 2, 1])
-    with res_col2:
-        st.metric(label="Predicted Annual Health Insurance Premium", value=f"₹{prediction:,}")
+    st.success(f'Predicted Health Insurance Cost: ₹{prediction:,}')
 # import streamlit as st
 # from prediction_helper import predict
 
