@@ -1,12 +1,8 @@
 import streamlit as st
 from prediction_helper import predict
 
-st.set_page_config(page_title="Health Insurance Cost Predictor", page_icon="🏥", layout="wide")
-
-st.title('🏥 Health Insurance Cost Predictor')
-st.caption('Enter your details below to get an estimated health insurance premium based on a machine learning model.')
-
-st.divider()
+st.title('Health Insurance Cost Predictor')
+st.caption("Predicts annual health insurance premium based on customer risk profile.")
 
 categorical_options = {
     'Gender': ['Male', 'Female'],
@@ -23,48 +19,39 @@ categorical_options = {
     'Insurance Plan': ['Bronze', 'Silver', 'Gold']
 }
 
-st.subheader('👤 Personal Information')
 row1 = st.columns(3)
+row2 = st.columns(3)
+row3 = st.columns(3)
+row4 = st.columns(3)
+
+# Assign inputs to the grid
 with row1[0]:
     age = st.number_input('Age', min_value=18, step=1, max_value=100)
 with row1[1]:
-    gender = st.selectbox('Gender', categorical_options['Gender'])
-with row1[2]:
-    marital_status = st.selectbox('Marital Status', categorical_options['Marital Status'])
-
-row2 = st.columns(3)
-with row2[0]:
     number_of_dependants = st.number_input('Number of Dependants', min_value=0, step=1, max_value=20)
+with row1[2]:
+    income_lakhs = st.number_input('Income in Lakhs', step=1, min_value=0, max_value=200)
+
+with row2[0]:
+    genetical_risk = st.number_input('Genetical Risk', step=1, min_value=0, max_value=5)
 with row2[1]:
-    region = st.selectbox('Region', categorical_options['Region'])
+    insurance_plan = st.selectbox('Insurance Plan', categorical_options['Insurance Plan'])
 with row2[2]:
     employment_status = st.selectbox('Employment Status', categorical_options['Employment Status'])
 
-st.divider()
-
-st.subheader('🩺 Health Information')
-row3 = st.columns(3)
 with row3[0]:
-    bmi_category = st.selectbox('BMI Category', categorical_options['BMI Category'])
+    gender = st.selectbox('Gender', categorical_options['Gender'])
 with row3[1]:
-    smoking_status = st.selectbox('Smoking Status', categorical_options['Smoking Status'])
+    marital_status = st.selectbox('Marital Status', categorical_options['Marital Status'])
 with row3[2]:
-    medical_history = st.selectbox('Medical History', categorical_options['Medical History'])
+    bmi_category = st.selectbox('BMI Category', categorical_options['BMI Category'])
 
-row4 = st.columns(3)
 with row4[0]:
-    genetical_risk = st.number_input('Genetical Risk (0-5)', step=1, min_value=0, max_value=5)
-
-st.divider()
-
-st.subheader('💼 Financial & Policy Information')
-row5 = st.columns(3)
-with row5[0]:
-    income_lakhs = st.number_input('Income in Lakhs', step=1, min_value=0, max_value=200)
-with row5[1]:
-    insurance_plan = st.selectbox('Insurance Plan', categorical_options['Insurance Plan'])
-
-st.divider()
+    smoking_status = st.selectbox('Smoking Status', categorical_options['Smoking Status'])
+with row4[1]:
+    region = st.selectbox('Region', categorical_options['Region'])
+with row4[2]:
+    medical_history = st.selectbox('Medical History', categorical_options['Medical History'])
 
 # Create a dictionary for input values
 input_dict = {
@@ -81,89 +68,6 @@ input_dict = {
     'Region': region,
     'Medical History': medical_history
 }
-
-col1, col2, col3 = st.columns([1, 1, 1])
-with col2:
-    predict_clicked = st.button('🔍 Predict Premium', use_container_width=True, type="primary")
-
-if predict_clicked:
+if st.button('Predict'):
     prediction = predict(input_dict)
-    st.divider()
-    res_col1, res_col2, res_col3 = st.columns([1, 2, 1])
-    with res_col2:
-        st.metric(label="Predicted Annual Health Insurance Premium", value=f"₹{prediction:,}")
-        model_used = "Linear Regression (Young model)" if age <= 25 else "XGBoost Regressor (Rest model)"
-        st.caption(f"Model used: {model_used} · based on age = {age}")
-# import streamlit as st
-# from prediction_helper import predict
-
-# st.title('Health Insurance Cost Predictor')
-# st.caption("Predicts annual health insurance premium based on customer risk profile.")
-
-# categorical_options = {
-#     'Gender': ['Male', 'Female'],
-#     'Marital Status': ['Unmarried', 'Married'],
-#     'BMI Category': ['Normal', 'Obesity', 'Overweight', 'Underweight'],
-#     'Smoking Status': ['No Smoking', 'Regular', 'Occasional'],
-#     'Employment Status': ['Salaried', 'Self-Employed', 'Freelancer', ''],
-#     'Region': ['Northwest', 'Southeast', 'Northeast', 'Southwest'],
-#     'Medical History': [
-#         'No Disease', 'Diabetes', 'High blood pressure', 'Diabetes & High blood pressure',
-#         'Thyroid', 'Heart disease', 'High blood pressure & Heart disease', 'Diabetes & Thyroid',
-#         'Diabetes & Heart disease'
-#     ],
-#     'Insurance Plan': ['Bronze', 'Silver', 'Gold']
-# }
-
-# row1 = st.columns(3)
-# row2 = st.columns(3)
-# row3 = st.columns(3)
-# row4 = st.columns(3)
-
-# # Assign inputs to the grid
-# with row1[0]:
-#     age = st.number_input('Age', min_value=18, step=1, max_value=100)
-# with row1[1]:
-#     number_of_dependants = st.number_input('Number of Dependants', min_value=0, step=1, max_value=20)
-# with row1[2]:
-#     income_lakhs = st.number_input('Income in Lakhs', step=1, min_value=0, max_value=200)
-
-# with row2[0]:
-#     genetical_risk = st.number_input('Genetical Risk', step=1, min_value=0, max_value=5)
-# with row2[1]:
-#     insurance_plan = st.selectbox('Insurance Plan', categorical_options['Insurance Plan'])
-# with row2[2]:
-#     employment_status = st.selectbox('Employment Status', categorical_options['Employment Status'])
-
-# with row3[0]:
-#     gender = st.selectbox('Gender', categorical_options['Gender'])
-# with row3[1]:
-#     marital_status = st.selectbox('Marital Status', categorical_options['Marital Status'])
-# with row3[2]:
-#     bmi_category = st.selectbox('BMI Category', categorical_options['BMI Category'])
-
-# with row4[0]:
-#     smoking_status = st.selectbox('Smoking Status', categorical_options['Smoking Status'])
-# with row4[1]:
-#     region = st.selectbox('Region', categorical_options['Region'])
-# with row4[2]:
-#     medical_history = st.selectbox('Medical History', categorical_options['Medical History'])
-
-# # Create a dictionary for input values
-# input_dict = {
-#     'Age': age,
-#     'Number of Dependants': number_of_dependants,
-#     'Income in Lakhs': income_lakhs,
-#     'Genetical Risk': genetical_risk,
-#     'Insurance Plan': insurance_plan,
-#     'Employment Status': employment_status,
-#     'Gender': gender,
-#     'Marital Status': marital_status,
-#     'BMI Category': bmi_category,
-#     'Smoking Status': smoking_status,
-#     'Region': region,
-#     'Medical History': medical_history
-# }
-# if st.button('Predict'):
-#     prediction = predict(input_dict)
-#     st.success(f'Predicted Annual Health Insurance Premium: ₹{prediction:,}')
+    st.success(f'Predicted Annual Health Insurance Premium: ₹{prediction:,}')
