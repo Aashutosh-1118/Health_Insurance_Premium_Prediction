@@ -23,6 +23,29 @@ The appropriate model is selected **dynamically at runtime** based on the user's
 
 ---
 
+---
+## 📊 Model Evaluation
+
+Initially trained a single model on the full dataset — looked strong overall (R² ≈ 0.98),
+but error analysis showed ~30% of predictions had >10% error, concentrated in users aged 25 and under.
+
+Splitting by age alone didn't fix it — the young-user model actually got worse in isolation (R² dropped to ~0.56),
+since that segment had less behavioral/medical signal to work with.
+
+Adding a missing `genetical_risk` feature for the young segment fixed this:
+
+| Segment | Model | R² (test) |
+|---|---|---|
+| Age ≤ 25 | Linear Regression | 0.989 |
+| Age > 25 | XGBoost | 0.998 |
+
+Linear Regression outperformed XGBoost on the young segment — likely overfitting on a smaller,
+lower-signal dataset. That's why the deployed app uses Linear Regression for younger users
+and XGBoost for everyone else.
+
+---
+
+
 ## 📁 Project Structure
 
 ```text
